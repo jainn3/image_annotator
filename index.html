@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Image Annotator</title>
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.16/d3.js"></script>
+	<style type="text/css">
+
+svg {
+    border: solid 1px;
+    width: 800px;
+    height: 600px;
+}
+        
+        
+
+.image_load { background-image: url("img.png"); background-repeat: repeat; }
+
+line {
+    stroke: red;
+}
+
+#v_crosshair, #h_crosshair {
+    stroke: black;
+    stroke-width: 3px;
+    stroke-dasharray: 6, 3;
+    opacity: 0.33;
+    display: none;
+}
+.button {
+    background-color: #4CAF50;
+   
+}
+.add_button {
+    background-color: #4CAF50;  
+}
+
+div.tooltip {
+  position: absolute;	
+  text-align: center;	
+  width: 60px;	
+  height: 18px;		
+  padding: 2px;	
+  font: 12px sans-serif;	
+  background: lightsteelblue;	
+  border: 0px;					
+  border-radius: 8px;
+ /*  pointer-events: none;	This line needs to be removed */
+	
+}    
+	</style>
+</head>
+<body>
+	<select name="mode" id="mode" onchange="leaveChange1()" style="visibility:hidden;">
+		<option value="H" selected="selected">Horizontal</option>
+		<option value="V">Vertical</option>
+        <!-- <option value="E">Erase</option> -->
+        <option value="EH">Erase Horizontal</option>
+        <option value="EV">Erase Vertical</option>
+        <option value="CT">Create Table</option>
+        <option value="Z">Zooming</option>
+        <option value="ET">Erase Table</option>
+        <option value="R">Refresh</option>
+        <option value="EL">Erase Entire Line</option>
+        <option value="L">Load</option>
+        <option value="S">Save</option>
+        <!-- <option value="AT">Add Table</option> -->
+	</select>
+    <form>
+    <fieldset id="group1">
+        <input type="button" value="Add/Drag/Del H Line" name="H" onclick="buttonClick(this)">
+        <input type="button" value="Add/Drag/Del V Line" name="V" onclick="buttonClick(this)">
+    <!--
+        <input type="button" value="Add/Remove Horizontal Segment" name="EH" onclick="buttonClick(this)">
+        <input type="button" value="Add/Remove Vertical Segment" name="EV" onclick="buttonClick(this)">
+
+        <input type="button" value="Erase Entire Line" name="EL" onclick="buttonClick(this)">
+        -->
+        <input type="file" id="fileInput" name = "B" style="visibility:hidden;">
+
+    </fieldset>
+
+    <fieldset id="group2">
+        <input type="button"  value="Erase Table" name="ET" onclick="buttonClick(this)">
+        <input type="button" value="Table Mode: Add/Drag/Resize" name="CT" onclick="buttonClick(this)">
+        <!--<input type="button" value="Zooming" name="Z" onclick="buttonClick(this)">-->
+        <input type="button" value="Refresh" name="R" onclick="buttonClick(this)">
+        <input type="button" value="Save" name="S" onclick="buttonClick(this)">
+        <input type="button" value="Load" name="L" onclick="buttonClick(this)">
+        <!--<input type="button"  value="Add Tables" name="AT" id="createTable" onclick="buttonClick(this)"> -->
+
+		</div>
+
+    </fieldset>
+</form>
+    
+    <div id="console"></div>
+
+    <script>
+        prev = null;
+        function buttonClick(curr)
+        {
+            if(prev != null)
+                prev.classList.remove("button");
+            prev = curr;
+            
+            name = curr.name;
+            curr.classList.add("button");
+            document.getElementById("mode").value = name;
+            leaveChange();
+        }
+
+    </script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+    <script src="http://code.jquery.com/ui/1.9.2/jquery-ui.js"></script>
+    <script type="text/javascript" src="helper.js"></script>
+    <script type="text/javascript" src="script.js"></script>
+    <!-- file saver script -->
+    <script type="text/javascript" src="FileSaver.js"></script>
+    <script type="text/javascript" src="xml2json.js"></script>
+    <script type="text/javascript" src="json2xml.js"></script>
+
+</body>
+</html>
