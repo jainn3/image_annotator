@@ -954,7 +954,7 @@ function fun()
    return data;
 }
 
-function linemousehover(_this=null)
+function linemousehover()
 {
     cline = d3.select(this);
     if(rgb2hex(cline.style("stroke")) == "#d7e3fe") 
@@ -963,7 +963,7 @@ function linemousehover(_this=null)
     }
     
 }
-function linemouseout(_this=null)
+function linemouseout()
 {
   cline = d3.select(this);
     if(rgb2hex(cline.style("stroke")) == "#d7e3fe") 

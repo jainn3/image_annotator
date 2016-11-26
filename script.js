@@ -759,7 +759,7 @@ function wrappercreateGrid()
     createGrid(this);
 }
 //crreating a rectangle and 4 edge circle for resizing. start=(50,50) width=height=300, red-color 5px thickness.
-function createGrid(_this = null) {
+function createGrid(_this) {
     mode = document.getElementById('mode').value;
     if (mode == "CT") {
         var m = d3.mouse(_this);
