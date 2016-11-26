@@ -479,7 +479,11 @@ function EraseAllGroups() {
 
 //adding lines based on the parameter. stroke and stroke width is only for deleted lines. 
 //# Imp. There is .on event.
-function addlines(container, x1, x2, y1, y2, name, className, stroke, strokewidth, isdel=false, forceMarker=false) {
+function addlines(container, x1, x2, y1, y2, name, className, stroke, strokewidth, isdel, forceMarker) {
+    if(typeof(isdel) === 'undefined')
+            isdel = false;
+    if(typeof(forceMarker) === 'undefined')
+            forceMarker = false;
     
      marker = false;
     rect = d3.select(container).select("rect");
