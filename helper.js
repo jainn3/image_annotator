@@ -364,13 +364,13 @@ function convertToArraySort(inputArr, rect, type) {
     return fmtArray;
 }
 
-function getrectangle(h_start, h_end, v_start, v_end, row = null, col = null) {
+function getrectangle(h_start, h_end, v_start, v_end, row, col) {
     //console.log(v_start["x1"] + "   " + h_start["y1"] + " ");
     //console.log((+v_end["x1"] - +v_start["x1"]) + " " + (+h_end["y1"] - +h_start["y1"]) + " ");
     //console.log("next");
-if(row == null)
+if(typeof(row) === 'undefined')
     row = -1;
-if(col == null)
+if(typeof(col) === 'undefined')
     col = -1;
     var jsonData = {};
     //var ctm = line[i].parentNode.getCTM();  
